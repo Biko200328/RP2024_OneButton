@@ -293,13 +293,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.1564345, y: 0, z: 0, w: 0.98768836}
-  m_LocalPosition: {x: 0, y: 3.46, z: -10}
+  m_LocalRotation: {x: 0.07193267, y: 0, z: 0, w: 0.9974095}
+  m_LocalPosition: {x: 0, y: 5.49, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 18, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.25, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,8 +404,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397462913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.3, y: 0, z: 27.7}
+  m_LocalScale: {x: 1.9, y: 1, z: 6.93}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -467,6 +467,8 @@ GameObject:
   - component: {fileID: 1732396534}
   - component: {fileID: 1732396533}
   - component: {fileID: 1732396538}
+  - component: {fileID: 1732396539}
+  - component: {fileID: 1732396540}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -488,7 +490,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 64
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1732396534
 BoxCollider:
@@ -560,7 +562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732396532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: -1.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2135247950}
@@ -579,9 +581,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd99c51e473df5e42b03811d2657e7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 5
+  moveSpeed: 5
+  sideLimit: 9
+  isLongPress: 1
+--- !u!114 &1732396539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732396532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3188b8202d76140b6743976c95550f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isJump: 0
+  jumpPower: 10
   isDoubleJump: 0
-  isInfiniteJump: 1
+  isInfiniteJump: 0
+--- !u!114 &1732396540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732396532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b78181a787ce3c4ab3b2f85403b321d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBullet: {fileID: 694421947930059573, guid: 2c77ad7e0eff2af4cabefc1a949dde68, type: 3}
+  bulletSpeed: 15
+  axis: 2
+  destroyTime: 200
 --- !u!1 &2135247949
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b594e252ffc05564f85254eb1b159f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMove: {fileID: 1732396538}
+  playerJump: {fileID: 1732396539}
 --- !u!65 &2135247952
 BoxCollider:
   m_ObjectHideFlags: 0

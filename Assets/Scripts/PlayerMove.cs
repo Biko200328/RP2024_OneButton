@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-	[SerializeField] float jumpPower = 10;
+	[SerializeField] float moveSpeed;
+	[SerializeField] float sideLimit;
 
-	[SerializeField] bool isDoubleJump;
-	[SerializeField] bool isInfiniteJump;
-	[System.NonSerialized] public bool isSecond;
-
-	[System.NonSerialized] public bool isOnFloor;
+	[SerializeField] bool isLongPress;
 
 	Rigidbody rb;
 
@@ -25,38 +22,44 @@ public class PlayerMove : MonoBehaviour
 	{
 		var v = rb.velocity;
 
-		if(Input.GetKeyDown(KeyCode.Space))
+		//長押し
+		if (isLongPress == true)
 		{
-			//無限ジャンプ
-			if (isInfiniteJump)
+			//していたら止まる
+			if (Input.GetKey(KeyCode.Space))
 			{
-				v.y = 0;
-				v.y += jumpPower;
+				v.x = 0;
 			}
 			else
 			{
-				//地面についているとき
-				if (isOnFloor == true)
-				{
-					v.y = 0;
-					v.y += jumpPower;
-				}
-				else
-				{
-					//ダブルジャンプ
-					if (isDoubleJump == true)
-					{
-						if (isSecond == false)
-						{
-							v.y = 0;
-							v.y += jumpPower;
-							isSecond = true;
-						}
-					}
-				}
+				v.x = moveSpeed;
 			}
 		}
-		
+		//そもそも長押しは付けない
+		else
+		{
+			v.x = moveSpeed;
+		}
+
+
+		//反転
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			moveSpeed = -moveSpeed;
+		}
+
+		//反対側に行ったら戻ってくる
+		var pos = transform.position;
+		if (transform.position.x >= sideLimit)
+		{
+			pos.x = -sideLimit;
+		}
+		else if (transform.position.x <= -sideLimit)
+		{
+			pos.x = sideLimit;
+		}
+		transform.position = pos;
+
 		rb.velocity = v;
 	}
 }

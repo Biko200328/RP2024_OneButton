@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnFloor : MonoBehaviour
 {
-	public PlayerMove playerMove;
+	public PlayerJump playerJump;
 
 	// Start is called before the first frame update
 	void Start()
@@ -22,8 +22,8 @@ public class OnFloor : MonoBehaviour
 	{
 		if(other.gameObject.tag == "Floor")
 		{
-			playerMove.isOnFloor = true;
-			playerMove.isSecond = false;
+			playerJump.isOnFloor = true;
+			playerJump.isSecond = false;
 		}
 	}
 
@@ -31,7 +31,7 @@ public class OnFloor : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Floor")
 		{
-			playerMove.isOnFloor = true;
+			playerJump.isOnFloor = true;
 		}
 	}
 
@@ -39,7 +39,7 @@ public class OnFloor : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Floor")
 		{
-			playerMove.isOnFloor = false;
+			playerJump.isOnFloor = false;
 		}
 	}
 }
