@@ -149,6 +149,7 @@ MonoBehaviour:
   center: {fileID: 0}
   parentObj: {fileID: 7267237485873262679}
   enemyGauge: {fileID: 8516537690997643958}
+  breakSE: {fileID: 0}
 --- !u!1 &7267237485873262679
 GameObject:
   m_ObjectHideFlags: 0

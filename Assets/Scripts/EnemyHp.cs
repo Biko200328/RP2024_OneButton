@@ -21,6 +21,8 @@ public class EnemyHp : MonoBehaviour
 	public GameObject parentObj;
 	public EnemyGauge enemyGauge;
 
+	GameManager gameManager;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -33,6 +35,8 @@ public class EnemyHp : MonoBehaviour
 		transform.LookAt(center.transform);
 
 		scoreManager = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreManager>();
+
+		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -56,6 +60,7 @@ public class EnemyHp : MonoBehaviour
 			if(enemyGauge.ReturnNum() <= -1)
 			{
 				Instantiate(deadParticle, transform.position, Quaternion.identity);
+				gameManager.PlayBreakSE();
 				Destroy(parentObj);
 			}
 		}

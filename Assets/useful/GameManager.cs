@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 	public bool isLongPush;
 	[SerializeField] float LPtime;
 	float timer;
+
+	public AudioSource breakSE;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -31,5 +34,10 @@ public class GameManager : MonoBehaviour
 			timer = 0;
 			isLongPush = false;
 		}
+	}
+
+	public void PlayBreakSE()
+	{
+		breakSE.Play();
 	}
 }
