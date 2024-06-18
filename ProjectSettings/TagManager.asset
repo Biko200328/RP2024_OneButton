@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Enemy
   - GameOverLine
+  - Center
+  - Score
   layers:
   - Default
   - TransparentFX
