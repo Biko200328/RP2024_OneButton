@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-	[SerializeField] bool isJump;
 	[SerializeField] float jumpPower = 10;
 
 	[SerializeField] bool isDoubleJump;

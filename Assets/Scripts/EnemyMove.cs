@@ -1,26 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
-public class PlayerBullet : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
 	public float speed;
+	Rigidbody rb;
 
-	[Header("”­ŽË‚·‚é•ûŒü 0=x,1=y,2=z")]
+	[Header("ˆÚ“®‚·‚é•ûŒü 0=x,1=y,2=z")]
 	[Range(0, 2)]
 	public int axis;
 
 	public int destroyTime = 100;
 	int timer;
 
-	Rigidbody rb;
-
 	// Start is called before the first frame update
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-
-		rb.useGravity = false;
 	}
 
 	// Update is called once per frame
@@ -28,7 +26,7 @@ public class PlayerBullet : MonoBehaviour
 	{
 		var v = rb.velocity;
 
-		if(axis == 0)
+		if (axis == 0)
 		{
 			v.x = speed;
 		}
@@ -47,7 +45,7 @@ public class PlayerBullet : MonoBehaviour
 	private void FixedUpdate()
 	{
 		timer++;
-		if(timer >= destroyTime)
+		if (timer >= destroyTime)
 		{
 			Destroy(this.gameObject);
 		}
