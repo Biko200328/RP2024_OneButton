@@ -16,6 +16,8 @@ public class PlayerShot : MonoBehaviour
 
 	public GameObject target;
 
+	public AudioSource shotSE;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -27,6 +29,7 @@ public class PlayerShot : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
+			shotSE.Play();
 			PlayerBullet pb = Instantiate(playerBullet, transform.position, Quaternion.identity).GetComponent<PlayerBullet>();
 			pb.speed = bulletSpeed;
 			pb.axis = axis;
