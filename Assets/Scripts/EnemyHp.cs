@@ -10,10 +10,14 @@ public class EnemyHp : MonoBehaviour
 
 	[SerializeField] GameObject deadParticle;
 
+	SceneController sceneController;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		nowHp = maxHp;
+
+		sceneController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SceneController>();
 	}
 
 	// Update is called once per frame
@@ -29,6 +33,14 @@ public class EnemyHp : MonoBehaviour
 		{
 			Instantiate(deadParticle, transform.position, Quaternion.identity);
 			Destroy(this.gameObject);
+		}
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.tag == "GameOverLine")
+		{
+			sceneController.sceneChange("3_EndScene");
 		}
 	}
 }

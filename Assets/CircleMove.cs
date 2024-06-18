@@ -20,8 +20,6 @@ public class CircleMove : MonoBehaviour
 	public CircleMove cameraMove;
 	BoxCollider coll;
 
-	bool isTransparent;
-
 	// Use this for initialization
 	void Start()
 	{
@@ -83,6 +81,10 @@ public class CircleMove : MonoBehaviour
 		if(collision.gameObject.tag == "Enemy")
 		{
 			direction = !direction;
+
+			EnemyHp enemyHp = collision.gameObject.GetComponent<EnemyHp>();
+			enemyHp.Damage();
+
 			if(cameraMove != null)
 			{
 				cameraMove.direction = !cameraMove.direction;
