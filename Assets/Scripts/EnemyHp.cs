@@ -18,6 +18,8 @@ public class EnemyHp : MonoBehaviour
 	int score = 1;
 	ScoreManager scoreManager;
 
+	public EnemyGauge enemyGauge;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -50,8 +52,17 @@ public class EnemyHp : MonoBehaviour
 		{
 			Instantiate(deadParticle, transform.position, Quaternion.identity);
 			scoreManager.AddScore(score);
-			Destroy(this.gameObject);
+			enemyGauge.MinusNum();
+			if(enemyGauge.ReturnNum() <= 0)
+			{
+				Destroy(this.gameObject);
+			}
 		}
+	}
+
+	public void Buff()
+	{
+		enemyGauge.AddNum();
 	}
 
 	private void OnCollisionEnter(Collision collision)
