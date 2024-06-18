@@ -33,9 +33,9 @@ public class EnemyGauge : MonoBehaviour
 	public void MinusNum()
 	{
 		nowNum--;
-		if (nowNum <= 0)
+		if (nowNum <= -1)
 		{
-			nowNum = 0;
+			nowNum = -1;
 		}
 	}
 

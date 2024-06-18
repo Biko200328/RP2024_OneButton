@@ -15,6 +15,9 @@ public class CreateEnemy : MonoBehaviour
 	float _x;
 	float _z;
 
+	[SerializeField] float growSpeed;
+	[SerializeField] float fastGrowSpeed;
+
 	public GameObject Enemy;
 
 	// Start is called before the first frame update
@@ -39,7 +42,9 @@ public class CreateEnemy : MonoBehaviour
 			_z = radius * Mathf.Cos(rotate);
 
 			//ê∂ê¨
-			Instantiate(Enemy, new Vector3(_x, transform.position.y, _z), Quaternion.identity);
+			Grow grow = Instantiate(Enemy, new Vector3(_x, transform.position.y, _z), Quaternion.identity).GetComponent<Grow>();
+			grow.speed = growSpeed;
+			grow.fastSpeed = fastGrowSpeed;
 
 			timer = 0;
 		}

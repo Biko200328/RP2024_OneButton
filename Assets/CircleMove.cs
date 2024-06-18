@@ -20,6 +20,8 @@ public class CircleMove : MonoBehaviour
 	public CircleMove cameraMove;
 	BoxCollider coll;
 
+	[SerializeField] TitleManager titleManager;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -27,17 +29,49 @@ public class CircleMove : MonoBehaviour
 		{
 			coll = GetComponent<BoxCollider>();
 		}
+
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Space))
+		if(titleManager != null)
+		{
+			if(titleManager.isStart)
+			{
+				Move();
+			}
+		}
+		else
+		{
+			Move();
+		}
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.tag == "Enemy")
+		{
+			direction = !direction;
+
+			EnemyHp enemyHp = collision.gameObject.GetComponent<EnemyHp>();
+			enemyHp.Damage();
+
+			if(cameraMove != null)
+			{
+				cameraMove.direction = !cameraMove.direction;
+			}
+		}
+	}
+
+	public void Move()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			direction = !direction;
 		}
 
-		if(isPlayer)
+		if (isPlayer)
 		{
 			if (Input.GetKey(KeyCode.Space))
 			{
@@ -45,16 +79,16 @@ public class CircleMove : MonoBehaviour
 			}
 			else
 			{
-				if(coll.isTrigger == true)
+				if (coll.isTrigger == true)
 				{
 					coll.isTrigger = false;
 				}
 			}
 
 		}
-		
 
-		if(direction)
+
+		if (direction)
 		{
 			rotate -= speed;
 		}
@@ -73,22 +107,6 @@ public class CircleMove : MonoBehaviour
 		if (targetObj != null)
 		{
 			transform.LookAt(targetObj.transform);
-		}
-	}
-
-	private void OnCollisionEnter(Collision collision)
-	{
-		if(collision.gameObject.tag == "Enemy")
-		{
-			direction = !direction;
-
-			EnemyHp enemyHp = collision.gameObject.GetComponent<EnemyHp>();
-			enemyHp.Damage();
-
-			if(cameraMove != null)
-			{
-				cameraMove.direction = !cameraMove.direction;
-			}
 		}
 	}
 }

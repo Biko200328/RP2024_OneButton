@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class EndManager : MonoBehaviour
 {
-	public bool isLongPush;
-	[SerializeField] float LPtime;
-	float timer;
+	public SceneController sceneController;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -17,19 +16,14 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKey(KeyCode.Space))
+		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			timer++;
-			if(timer >= LPtime)
-			{
-				isLongPush = true;
-			}
+			sceneController.sceneChange("2_GameScene");
 		}
-		
-		if(Input.GetKeyUp(KeyCode.Space))
+
+		if (Input.GetKeyDown(KeyCode.T))
 		{
-			timer = 0;
-			isLongPush = false;
+			sceneController.sceneChange("1_TitleScene");
 		}
 	}
 }

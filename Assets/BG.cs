@@ -17,10 +17,12 @@ public class BG : MonoBehaviour
 
 	public GameObject Obj;
 
+	GameManager gameManager;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -28,21 +30,39 @@ public class BG : MonoBehaviour
 	{
 		timer++;
 
-		if(timer >= createTimer)
+		if(gameManager.isLongPush == true)
 		{
-			speed = Random.Range(0.5f, 10.0f);
+			if (timer >= createTimer / 10)
+			{
+				Create();
 
-			rotate += speed;
+				timer = 0;
+			}
+		}
+		else
+		{
+			if (timer >= createTimer)
+			{
+				Create();
 
-			//åªç›
-			_x = radius * Mathf.Sin(rotate);
-			_z = radius * Mathf.Cos(rotate);
-
-			//ê∂ê¨
-			Instantiate(Obj, new Vector3(_x, transform.position.y, _z),Quaternion.identity);
-
-			timer = 0;
+				timer = 0;
+			}
 		}
 		
+		
+	}
+
+	public void Create()
+	{
+		speed = Random.Range(0.5f, 10.0f);
+
+		rotate += speed;
+
+		//åªç›
+		_x = radius * Mathf.Sin(rotate);
+		_z = radius * Mathf.Cos(rotate);
+
+		//ê∂ê¨
+		Instantiate(Obj, new Vector3(_x, transform.position.y, _z), Quaternion.identity);
 	}
 }

@@ -9,13 +9,25 @@ public class BackBlock : MonoBehaviour
 
 	float[] speed = { 0, 0, 0 };
 
+	public float upSpeed;
+	public float upFastSpeed;
+
+	Rigidbody rb;
+
+	GameManager gameManager;
+
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		for(int i =0;i <3;i++)
 		{
-			speed[i] = Random.Range(0f, 1f);
+			speed[i] = Random.Range(0f, 2f);
 		}
+
+		rb = GetComponent<Rigidbody>();
+
+		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -28,5 +40,18 @@ public class BackBlock : MonoBehaviour
 		}
 
 		transform.localEulerAngles += new Vector3(speed[0], speed[1], speed[2]);
+
+		var v = rb.velocity;
+
+		if(gameManager.isLongPush == true)
+		{
+			v.y = upFastSpeed;
+		}
+		else
+		{
+			v.y = upSpeed;
+		}
+
+		rb.velocity = v;
 	}
 }

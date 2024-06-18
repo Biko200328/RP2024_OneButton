@@ -10,6 +10,7 @@ TagManager:
   - GameOverLine
   - Center
   - Score
+  - GameManager
   layers:
   - Default
   - TransparentFX

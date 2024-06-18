@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Grow : MonoBehaviour
 {
-	[SerializeField] float Speed;
+	public float speed;
+	public float fastSpeed;
 
 	// Start is called before the first frame update
 	void Start()
@@ -16,7 +17,15 @@ public class Grow : MonoBehaviour
 	void Update()
 	{
 		var scale = transform.localScale;
-		scale.y += Speed;
+		if(Input.GetKey(KeyCode.Space))
+		{
+			scale.y += fastSpeed;
+		}
+		else
+		{
+			scale.y += speed;
+		}
+		
 		transform.localScale = scale;
 	}
 }
