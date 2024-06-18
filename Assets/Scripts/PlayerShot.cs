@@ -14,6 +14,8 @@ public class PlayerShot : MonoBehaviour
 
 	public int destroyTime;
 
+	public GameObject target;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -29,6 +31,7 @@ public class PlayerShot : MonoBehaviour
 			pb.speed = bulletSpeed;
 			pb.axis = axis;
 			pb.destroyTime = destroyTime;
+			pb.target = target;
 		}
 		
 	}

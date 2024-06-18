@@ -15,12 +15,22 @@ public class PlayerBullet : MonoBehaviour
 
 	Rigidbody rb;
 
+	public bool isCircle;
+	public GameObject target;
+	Vector3 dec;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 
 		rb.useGravity = false;
+
+		if(isCircle == true)
+		{
+			dec = target.transform.position - transform.position;
+			dec = dec.normalized;
+		}
 	}
 
 	// Update is called once per frame
@@ -28,17 +38,24 @@ public class PlayerBullet : MonoBehaviour
 	{
 		var v = rb.velocity;
 
-		if(axis == 0)
+		if(isCircle == true)
 		{
-			v.x = speed;
+			v = dec * speed;
 		}
-		else if (axis == 1)
+		else
 		{
-			v.y = speed;
-		}
-		else if (axis == 2)
-		{
-			v.z = speed;
+			if (axis == 0)
+			{
+				v.x = speed;
+			}
+			else if (axis == 1)
+			{
+				v.y = speed;
+			}
+			else if (axis == 2)
+			{
+				v.z = speed;
+			}
 		}
 
 		rb.velocity = v;

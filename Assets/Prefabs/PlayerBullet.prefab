@@ -128,3 +128,5 @@ MonoBehaviour:
   speed: 15
   axis: 2
   destroyTime: 100
+  isCircle: 1
+  target: {fileID: 0}
