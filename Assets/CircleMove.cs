@@ -9,6 +9,8 @@ public class CircleMove : MonoBehaviour
 
 	public float speed;
 
+	bool direction;
+
 	float _x;
 	float _z;
 
@@ -23,7 +25,19 @@ public class CircleMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		rotate -= speed;
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			direction = !direction;
+		}
+
+		if(direction)
+		{
+			rotate -= speed;
+		}
+		else
+		{
+			rotate += speed;
+		}
 
 		//åªç›
 		_x = radius * Mathf.Sin(rotate);

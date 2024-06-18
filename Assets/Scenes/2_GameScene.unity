@@ -408,7 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotate: 0
   radius: 20.5
-  speed: 0.04
+  speed: 0.03
   targetObj: {fileID: 1405009887}
 --- !u!1001 &967050073
 PrefabInstance:
@@ -839,7 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotate: 0
   radius: 12
-  speed: 0.04
+  speed: 0.03
   targetObj: {fileID: 412369760}
 --- !u!1 &2135247949
 GameObject:
