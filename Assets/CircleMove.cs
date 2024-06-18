@@ -9,12 +9,14 @@ public class CircleMove : MonoBehaviour
 
 	public float speed;
 
-	bool direction;
+	public bool direction;
 
 	float _x;
 	float _z;
 
 	[SerializeField] GameObject targetObj;
+
+	public CircleMove cameraMove;
 
 	// Use this for initialization
 	void Start()
@@ -49,6 +51,18 @@ public class CircleMove : MonoBehaviour
 		if (targetObj != null)
 		{
 			transform.LookAt(targetObj.transform);
+		}
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.tag == "Enemy")
+		{
+			direction = !direction;
+			if(cameraMove != null)
+			{
+				cameraMove.direction = !cameraMove.direction;
+			}
 		}
 	}
 }

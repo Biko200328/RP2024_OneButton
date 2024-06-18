@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6967633815302374018, guid: de23f26dc87845849a49ef70b6e10d6f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6967633815302374022, guid: de23f26dc87845849a49ef70b6e10d6f, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -566,7 +570,9 @@ MonoBehaviour:
   rotate: 0
   radius: 20.5
   speed: 0.02
+  direction: 0
   targetObj: {fileID: 1405009887}
+  cameraMove: {fileID: 0}
 --- !u!1001 &967050073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,7 +891,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3730552360699c74ca5308a6677ecaa9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1095,7 +1101,9 @@ MonoBehaviour:
   rotate: 0
   radius: 12
   speed: 0.02
+  direction: 0
   targetObj: {fileID: 412369760}
+  cameraMove: {fileID: 963194230}
 --- !u!1 &2135247949
 GameObject:
   m_ObjectHideFlags: 0
