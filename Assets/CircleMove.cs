@@ -16,12 +16,19 @@ public class CircleMove : MonoBehaviour
 
 	[SerializeField] GameObject targetObj;
 
+	[SerializeField] bool isPlayer;
 	public CircleMove cameraMove;
+	BoxCollider coll;
+
+	bool isTransparent;
 
 	// Use this for initialization
 	void Start()
 	{
-		
+		if(isPlayer == true)
+		{
+			coll = GetComponent<BoxCollider>();
+		}
 	}
 
 	// Update is called once per frame
@@ -31,6 +38,23 @@ public class CircleMove : MonoBehaviour
 		{
 			direction = !direction;
 		}
+
+		if(isPlayer)
+		{
+			if (Input.GetKey(KeyCode.Space))
+			{
+				coll.isTrigger = true;
+			}
+			else
+			{
+				if(coll.isTrigger == true)
+				{
+					coll.isTrigger = false;
+				}
+			}
+
+		}
+		
 
 		if(direction)
 		{
