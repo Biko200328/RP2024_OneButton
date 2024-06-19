@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		text.text = scoreNum.ToString().PadLeft(5, '0');
+		text.text = scoreNum.ToString().PadLeft(7, '0');
 	}
 
 	public void AddScore(int x)

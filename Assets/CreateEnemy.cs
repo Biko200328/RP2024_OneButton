@@ -20,6 +20,10 @@ public class CreateEnemy : MonoBehaviour
 
 	public GameObject Enemy;
 
+	public int level;
+	public int lvUpTime;
+	int lvTimer;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -30,6 +34,7 @@ public class CreateEnemy : MonoBehaviour
 	void Update()
 	{
 		timer++;
+		lvTimer++;
 
 		if (timer >= createTimer)
 		{
@@ -47,6 +52,14 @@ public class CreateEnemy : MonoBehaviour
 			grow.fastSpeed = fastGrowSpeed;
 
 			timer = 0;
+		}
+
+		if(lvTimer >= lvUpTime)
+		{
+			level++;
+			growSpeed += growSpeed;
+			fastGrowSpeed += growSpeed;
+			lvTimer = 0;
 		}
 
 	}

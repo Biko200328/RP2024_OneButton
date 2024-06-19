@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 317622472276270173}
   - component: {fileID: 317622472276270172}
   - component: {fileID: 317622472276270171}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8516537690997643957}
   - component: {fileID: 8516537690997643958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 8516537691099141272}
   - component: {fileID: 8516537691099141279}
   - component: {fileID: 8516537691099141278}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
