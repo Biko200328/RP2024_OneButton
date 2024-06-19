@@ -146,6 +146,7 @@ MonoBehaviour:
   nowHp: 0
   damageNum: 1
   deadParticle: {fileID: 3590501731496294053, guid: 85a21ea53e55e634c93d3aadb6aacff4, type: 3}
+  deadParticle2: {fileID: 3590501731496294053, guid: 6107822597803164b8f896afa89e83df, type: 3}
   center: {fileID: 0}
   parentObj: {fileID: 7267237485873262679}
   enemyGauge: {fileID: 8516537690997643958}

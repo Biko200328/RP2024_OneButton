@@ -9,6 +9,7 @@ public class EnemyHp : MonoBehaviour
 	[SerializeField] int damageNum;
 
 	[SerializeField] GameObject deadParticle;
+	[SerializeField] GameObject deadParticle2;
 
 	SceneController sceneController;
 
@@ -62,6 +63,11 @@ public class EnemyHp : MonoBehaviour
 				Instantiate(deadParticle, transform.position, Quaternion.identity);
 				gameManager.PlayBreakSE();
 				Destroy(parentObj);
+			}
+			else
+			{
+				Instantiate(deadParticle2, transform.position, Quaternion.identity);
+				gameManager.PlayBreakSE();
 			}
 		}
 	}
