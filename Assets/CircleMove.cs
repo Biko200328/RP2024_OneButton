@@ -26,6 +26,8 @@ public class CircleMove : MonoBehaviour
 
 	GameManager gameManager;
 
+	[SerializeField] Material[] materialArray = new Material[1];
+
 	// Use this for initialization
 	void Start()
 	{
@@ -104,6 +106,7 @@ public class CircleMove : MonoBehaviour
 				{
 					nowSpeed = fastSpeed;
 				}
+				GetComponent<MeshRenderer>().material = materialArray[0];
 			}
 			else
 			{
@@ -112,6 +115,7 @@ public class CircleMove : MonoBehaviour
 				{
 					nowSpeed = speed;
 				}
+				GetComponent<MeshRenderer>().material = materialArray[1];
 			}
 			rotate -= nowSpeed;
 		}
@@ -124,6 +128,7 @@ public class CircleMove : MonoBehaviour
 				{
 					nowSpeed = fastSpeed;
 				}
+				GetComponent<MeshRenderer>().material = materialArray[0];
 			}
 			else
 			{
@@ -132,6 +137,7 @@ public class CircleMove : MonoBehaviour
 				{
 					nowSpeed = speed;
 				}
+				GetComponent<MeshRenderer>().material = materialArray[1];
 			}
 			rotate += nowSpeed;
 		}
