@@ -9,6 +9,9 @@ public class ScoreManager : MonoBehaviour
 
 	Text text;
 
+	public static float kScore;
+	public static float kHighScore;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -24,5 +27,14 @@ public class ScoreManager : MonoBehaviour
 	public void AddScore(int x)
 	{
 		scoreNum += x;
+	}
+
+	public void KeepScore()
+	{
+		kScore = scoreNum;
+		if(kScore >= kHighScore)
+		{
+			kHighScore = kScore;
+		}
 	}
 }

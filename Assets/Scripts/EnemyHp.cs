@@ -81,6 +81,7 @@ public class EnemyHp : MonoBehaviour
 	{
 		if(collision.gameObject.tag == "GameOverLine")
 		{
+			scoreManager.KeepScore();
 			sceneController.sceneChange("3_EndScene");
 		}
 	}
