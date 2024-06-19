@@ -7,7 +7,9 @@ public class CircleMove : MonoBehaviour
 	public float rotate = 0.5f;
 	public float radius = 20.5f;
 
+	public float nowSpeed;
 	public float speed;
+	public float fastSpeed;
 
 	public bool direction;
 
@@ -22,6 +24,8 @@ public class CircleMove : MonoBehaviour
 
 	[SerializeField] TitleManager titleManager;
 
+	GameManager gameManager;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -30,6 +34,9 @@ public class CircleMove : MonoBehaviour
 			coll = GetComponent<BoxCollider>();
 		}
 
+		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+		nowSpeed = speed;
 	}
 
 	// Update is called once per frame
@@ -90,11 +97,43 @@ public class CircleMove : MonoBehaviour
 
 		if (direction)
 		{
-			rotate -= speed;
+			if (gameManager.isLongPush)
+			{
+				nowSpeed += 0.001f;
+				if(nowSpeed >= fastSpeed)
+				{
+					nowSpeed = fastSpeed;
+				}
+			}
+			else
+			{
+				nowSpeed -= 0.002f;
+				if (nowSpeed <= speed)
+				{
+					nowSpeed = speed;
+				}
+			}
+			rotate -= nowSpeed;
 		}
 		else
 		{
-			rotate += speed;
+			if (gameManager.isLongPush)
+			{
+				nowSpeed += 0.001f;
+				if (nowSpeed >= fastSpeed)
+				{
+					nowSpeed = fastSpeed;
+				}
+			}
+			else
+			{
+				nowSpeed -= 0.002f;
+				if (nowSpeed <= speed)
+				{
+					nowSpeed = speed;
+				}
+			}
+			rotate += nowSpeed;
 		}
 
 		//Œ»Ý
