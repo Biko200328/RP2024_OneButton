@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateEnemy : MonoBehaviour
 {
-	public float createTimer;
+	public float createTime;
 	float timer;
 
 	float rotate = 0.5f;
@@ -36,7 +36,7 @@ public class CreateEnemy : MonoBehaviour
 		timer++;
 		lvTimer++;
 
-		if (timer >= createTimer)
+		if (timer >= createTime)
 		{
 			speed = Random.Range(0.5f, 10.0f);
 
@@ -59,6 +59,7 @@ public class CreateEnemy : MonoBehaviour
 			level++;
 			growSpeed += growSpeed;
 			fastGrowSpeed += growSpeed;
+			createTime -= 10;
 			lvTimer = 0;
 		}
 
