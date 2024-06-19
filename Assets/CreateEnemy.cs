@@ -57,8 +57,8 @@ public class CreateEnemy : MonoBehaviour
 		if(lvTimer >= lvUpTime)
 		{
 			level++;
-			growSpeed += growSpeed;
-			fastGrowSpeed += growSpeed;
+			growSpeed += growSpeed / 2;
+			fastGrowSpeed += growSpeed / 2;
 			createTime -= 10;
 			lvTimer = 0;
 		}
